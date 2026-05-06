@@ -3,27 +3,22 @@ package com.back;
 public class Calc {
 	public static int run(String cal) {
 		String[] parts;
-		boolean type = true;
-		int result = 0;
-		if (cal.equals("10 - 20 + 30")) {
-			return 20;
-		}
-		if (cal.contains("+")) {
-			parts = cal.split(" \\+ ");
-		} else {
-			parts = cal.split(" \\- ");
-			type = false;
-		}
-		if (type) {
-			for (String part :parts) {
-				int num1 = Integer.parseInt(part);
-				result+=num1;
+
+		parts = cal.split("\\s");
+
+		int result = Integer.parseInt(parts[0]);
+		for (int i = 1; i < parts.length; i += 2) {
+			String op = parts[i];          // "+", "-"
+			int num = Integer.parseInt(parts[i + 1]);
+
+			if (op.equals("+")) {
+				result += num;
+			} else if (op.equals("-")) {
+				result -= num;
 			}
-			return result;
-		} else {
-			int num1 = Integer.parseInt(parts[0]);
-			int num2 = Integer.parseInt(parts[1]);
-			return num1 - num2;
 		}
+
+		return result;
+
 	}
 }
