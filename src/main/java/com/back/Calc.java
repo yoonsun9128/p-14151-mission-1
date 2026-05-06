@@ -2,12 +2,20 @@ package com.back;
 
 public class Calc {
 	public static int run(String cal) {
-		if (cal.equals("2 - 1")) {
-			return 1;
+		String[] parts;
+		boolean type = true;
+		if (cal.contains("+")) {
+			parts = cal.split(" \\+ ");
+		} else {
+			parts = cal.split(" \\- ");
+			type = false;
 		}
-		String[] parts = cal.split(" \\+ ");
 		int num1 = Integer.parseInt(parts[0]);
 		int num2 = Integer.parseInt(parts[1]);
-		return num1 + num2;
+		if (type) {
+			return num1 + num2;
+		} else {
+			return num1 - num2;
+		}
 	}
 }
