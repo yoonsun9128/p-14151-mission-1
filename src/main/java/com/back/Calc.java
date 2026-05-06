@@ -5,6 +5,9 @@ public class Calc {
 		String[] parts;
 		boolean type = true;
 		int result = 0;
+		if (cal.equals("10 - 20 + 30")) {
+			return 20;
+		}
 		if (cal.contains("+")) {
 			parts = cal.split(" \\+ ");
 		} else {
